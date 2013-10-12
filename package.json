@@ -1,0 +1,28 @@
+{
+  "name": "nexus",
+  "version": "0.0.1",
+  "description": "a realtime app framework build on nodejs",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sourcec0de/nexus.git"
+  },
+  "author": "James R. Qualls",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sourcec0de/nexus/issues"
+  },
+  "dependencies": {
+    "express": "3.4.0",
+    "jade": "*",
+    "less-middleware": "*"
+  },
+  "engines": {
+    "node": "0.10.16",
+    "npm": "1.3.5"
+  }
+}
