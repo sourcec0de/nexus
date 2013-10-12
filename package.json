@@ -1,6 +1,6 @@
 {
   "name": "nexus",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "a realtime app framework build on nodejs",
   "main": "app.js",
   "scripts": {

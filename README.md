@@ -1,4 +1,4 @@
-# NEXAS
+# NEXUS
 
 - NODE JS
 - EXPRESS JS
