@@ -11,8 +11,8 @@ module.exports = {
     colorize: true,
     hostname: "nexus-" + os.hostname()
   },
-  file: {
-    filename: 'app.log',
-    // handleExceptions:true
-  }
+  // file: {
+  //   filename: 'app.log',
+  //   // handleExceptions:true
+  // }
 };

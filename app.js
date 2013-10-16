@@ -28,6 +28,7 @@ var fs = require("fs")
 ,   reload = require('./system/reload.js')
 ,   middleware = require("./config/middleware.js")
 ,   express = require('express')
+,   toobusy = require('toobusy')
 ;
 
 
@@ -98,8 +99,12 @@ if(!CONFIG){
 function createApp(){
   // Disables default x-powered-by header
   var app = express();
+  app.toobusy = toobusy
+  // installs toobusy to 503 out of a request if the server
+  // is under a heavy load, keeping your server from 'melting'
+  // https://hacks.mozilla.org/2013/01/building-a-node-js-server-that-wont-melt-a-node-js-holiday-season-part-5/
+  
   app.disable('x-powered-by');
-
   app.set('env', __NODE_ENV);
   app.set('port',                   CONFIG['port']           || 3000);
   app.set('ssl',                    CONFIG['ssl']            || false);

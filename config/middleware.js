@@ -27,6 +27,15 @@ module.exports = function(app, express) {
   mongoose() // enables __mongoose
 
   // Init Express Middleware
+  // The absolute first piece of middle-ware we would register, to block requests
+  // before we spend any time on them.
+  app.use(function(req, res, next) {
+    // check if we're toobusy() - note, this call is extremely fast, and returns
+    // state that is cached at a fixed interval
+    if (req.app.toobusy()) res.send(503, "I'm busy right now, sorry.");
+    else next();
+  });
+
   app.use(express.logger(":date :remote-addr :referrer :method :url :status :response-time"));
   // app.use(function(req,res,next){
   //   console.log(
