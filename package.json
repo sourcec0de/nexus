@@ -36,7 +36,10 @@
     "redis": "~0.8.6",
     "mongoose": "~3.6.20",
     "connect-mongo": "~0.3.3",
-    "toobusy": "~0.2.4"
+    "toobusy": "~0.2.4",
+    "traverse": "~0.6.6",
+    "should": "~2.0.2",
+    "express-validator": "~0.8.0"
   },
   "engines": {
     "node": "0.10.16",

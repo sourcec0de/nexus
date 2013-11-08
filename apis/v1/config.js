@@ -5,7 +5,7 @@ module.exports = {
   resources: {
     items: {
       uri: "/items",
-      // middleware executed on all routes
+      // middleware executed on all item routes
       policies: ["authorized"],
       endpoints: {
         "/": {
@@ -14,20 +14,7 @@ module.exports = {
           // middleware executed specifically on this route
           policies: ["authorized","cookies"],
           // params to be validated, and sanitized to their types
-          params: {
-            // required for type saftey
-            required: {},
-            optional: {
-              offset: {
-                type: "number",
-                dependsOn: "limit"
-              },
-              limit: {
-                type: "number",
-                dependsOn: "offset"
-              }
-            }
-          },
+          params: {},
           // Attributes && type checking
           // for API respons
           // can be extended by model
@@ -38,21 +25,28 @@ module.exports = {
           }
         },
         "/:id": {
+          controller:"show",
           method: "get",
           policies: [],
           params: {
-            // if required
-            required: {
-              upc: {
-                type: "number",
-                or: "id"
+            upc:{
+              notEmpty:{
+                args:null,
+                msg:"cannot be empty"
               },
-              id: {
-                type: "string",
-                or: "upc"
+              isInt:{
+                args:null,
+                msg:"must be a valid integer"
+              },
+              len:{
+                args:[6,12],
+                msg:"must have between 6 and 12 chars"
+              },
+              isIn:{
+                args:[[123456]],
+                msg:"must be one of [123456]"
               }
-            },
-            optional: {}
+            }
           }
         }
       }

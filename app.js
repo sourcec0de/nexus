@@ -125,6 +125,8 @@ function createApp(){
   // =================
 
   middleware(app,express);
+  // Bind static routes and blueprints
+  app.use(app.router);
   // reload();
 
   // =======================
@@ -143,7 +145,7 @@ function createApp(){
   load('apis/')
   .then('system/injectRoutes.js')
   .into(app);
-  // console.log(app.apis.v1)
+  // console.log(app.routes)
 
   // app.all("*",function(req,res){
   //   // console.log(req.app)
@@ -196,8 +198,6 @@ if (module === require.main) {
   if (__argv.cluster) balance(start);
   else start();
 }
-
-
 
 // =====================================
 // Export app to initialize testing hook

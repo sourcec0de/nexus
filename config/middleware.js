@@ -7,6 +7,7 @@
 var connectTimeout = require('connect-timeout')
 ,   redis = require("./datastores/redis.js")
 ,   mongoose = require("./datastores/mongoose.js")
+,   expressValidator = require("express-validator")
 ,   session = require("./session.js")
 ,   cssPre  = require("./cssPre.js")
 ,   path = require('path')
@@ -93,6 +94,9 @@ module.exports = function(app, express) {
   // Replace multipart with your own
   // file handling middleware
   app.use(express.multipart());
+
+  // validation module
+  app.use(expressValidator());
 
   // Make your api more strict by disabling
   // the ability to overide a req method ?_method=POST
